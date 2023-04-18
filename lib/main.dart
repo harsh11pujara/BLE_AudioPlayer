@@ -198,12 +198,50 @@ class _MyAppState extends State<MyApp> {
     );
   }
 
-  Widget audioPlayerPage(){
-    return Container(
+  Widget audioPlayerPage() {
+    return SizedBox(
       height: MediaQuery.of(context).size.height,
       width: MediaQuery.of(context).size.width,
-      child: Column(mainAxisAlignment: MainAxisAlignment.center,children: [
-
+      child: Column(mainAxisAlignment: MainAxisAlignment.center, children: [
+        SizedBox(
+            height: 250,
+            width: 250,
+            child: Image.network("https://img.freepik.com/free-psd/music-poster-design-template_23-2149081201.jpg?w=2000")),
+        const SizedBox(
+          height: 20,
+        ),
+        const Text("Song Name"),
+        const SizedBox(
+          height: 35,
+        ),
+        SizedBox(
+          width: 250,
+          child: Slider(onChanged: (value) {}, value: 0),
+        ),
+        SizedBox(
+          width: 250,
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: const [Text("00:00"), Text("05:00")],
+          ),
+        ),
+        const SizedBox(
+          height: 15,
+        ),
+        GestureDetector(
+          onTap: () async{
+            if(isPlaying){
+              // await player.play(Source);
+            }else{
+              player.pause();
+            }
+          },
+          child: const CircleAvatar(
+            radius: 30,
+            backgroundColor: Colors.blue,
+            child: Icon(Icons.play_arrow,color: Colors.white,),
+          ),
+        )
       ]),
     );
   }
@@ -237,5 +275,3 @@ class BluetoothOff extends StatelessWidget {
     );
   }
 }
-
-
