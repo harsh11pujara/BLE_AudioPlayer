@@ -38,9 +38,8 @@ class _PlaySongState extends State<PlaySong> {
   //   print(temp3);
   //   String finalUri = "file://$temp3";
   //   print(finalUri);
-  //   File file = File(finalUri);
   //   // print(file.path);
-  //   await player.setSourceUrl(finalUri);
+  //   await player.setSourceUrl(widget.song.uri.toString());
   //   setState(() {
   //     // duration = player.duration!;
   //   });
@@ -55,6 +54,7 @@ class _PlaySongState extends State<PlaySong> {
       songUrl = "file://${temp.path}";
       songName = songUrl.split("/").last;
       await player.setSourceUrl(songUrl);
+      print(songUrl);
       duration = await player.getDuration();
       setState(() {});
     }
@@ -154,7 +154,14 @@ class _PlaySongState extends State<PlaySong> {
                     );
                   },
                 )
-              : const Center(child: Text("Select a song to Play")),
+              : const Center(
+                  child: Text(
+                  "Select a song to Play",
+                  style: TextStyle(
+                    fontSize: 20,
+                    fontWeight: FontWeight.w500,
+                  ),
+                )),
         ),
         const SizedBox(
           height: 15,
